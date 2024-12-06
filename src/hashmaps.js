@@ -19,6 +19,12 @@ class HashMap {
 
   set(key, value) {
     const hashCode = this.hash(key);
+    for (let i = 0; i < this.bucketsList[hashCode].length; i++) {
+      if (this.bucketsList[hashCode][i][0] === key) {
+        this.bucketsList[hashCode][i][1] = value;
+        return;
+      }
+    }
     this.bucketsList[hashCode].push([key, value]);
   }
 }
