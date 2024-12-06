@@ -39,4 +39,15 @@ class HashMap {
     }
     return null;
   }
+
+  has(key) {
+    const hashCode = this.hash(key);
+    const bucket = this.bucketsList[hashCode];
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] === key) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
