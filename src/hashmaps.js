@@ -71,4 +71,10 @@ class HashMap {
     }
     return entries;
   }
+
+  clear() {
+    for (let i = 0; i < this.bucketsList.length; i++) {
+      this.bucketsList[i] = [];
+    }
+  }
 }
