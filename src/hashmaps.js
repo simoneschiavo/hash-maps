@@ -18,6 +18,7 @@ class HashMap {
   }
 
   set(key, value) {
+    // ADD the code to handle list growth at some point when entries > loadFactor * capacity
     const hashCode = this.hash(key);
     for (let i = 0; i < this.bucketsList[hashCode].length; i++) {
       if (this.bucketsList[hashCode][i][0] === key) {
@@ -26,5 +27,16 @@ class HashMap {
       }
     }
     this.bucketsList[hashCode].push([key, value]);
+  }
+
+  get(key) {
+    const hashCode = this.hash(key);
+    const bucket = this.bucketsList[hashCode];
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] === key) {
+        return bucket[i][1];
+      }
+    }
+    return null;
   }
 }
