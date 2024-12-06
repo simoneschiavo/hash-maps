@@ -17,5 +17,8 @@ class HashMap {
     return hashCode;
   }
 
-  set(key, value) {}
+  set(key, value) {
+    const hashCode = this.hash(key);
+    this.bucketsList[hashCode].push([key, value]);
+  }
 }
