@@ -1,5 +1,5 @@
 class HashMap {
-  constructor(loadFactor, capacity = 16) {
+  constructor(loadFactor = 0.75, capacity = 16) {
     this.loadFactor = loadFactor;
     this.capacity = capacity;
     this.bucketsList = [];
