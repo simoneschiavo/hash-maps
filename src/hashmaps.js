@@ -97,4 +97,14 @@ class HashMap {
     }
     return values;
   }
+
+  entries() {
+    let keyValuesArray = [];
+    for (let i = 0; i < this.bucketsList.length; i++) {
+      for (let j = 0; j < this.bucketsList[i].length; j++) {
+        keyValuesArray.push(this.bucketsList[i][j]);
+      }
+    }
+    return keyValuesArray;
+  }
 }
