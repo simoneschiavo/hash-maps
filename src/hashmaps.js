@@ -50,4 +50,15 @@ class HashMap {
     }
     return false;
   }
+
+  remove(key) {
+    const hashCode = this.hash(key);
+    const bucket = this.bucketsList[hashCode];
+    const subIndex = bucket.findIndex((subBucket) => subBucket[0] === key);
+    if (subIndex !== -1) {
+      bucket.splice(subIndex, 1);
+      return true;
+    }
+    return false;
+  }
 }
