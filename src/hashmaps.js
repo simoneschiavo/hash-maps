@@ -61,4 +61,14 @@ class HashMap {
     }
     return false;
   }
+
+  length() {
+    let entries = 0;
+    for (let i = 0; i < this.bucketsList.length; i++) {
+      for (let j = 0; j < this.bucketsList[i].length; j++) {
+        entries++;
+      }
+    }
+    return entries;
+  }
 }
