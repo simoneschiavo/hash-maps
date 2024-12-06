@@ -18,7 +18,6 @@ class HashMap {
   }
 
   set(key, value) {
-    // ADD the code to handle list growth at some point when entries > loadFactor * capacity
     const hashCode = this.hash(key);
     for (let i = 0; i < this.bucketsList[hashCode].length; i++) {
       if (this.bucketsList[hashCode][i][0] === key) {
@@ -27,6 +26,7 @@ class HashMap {
       }
     }
     this.bucketsList[hashCode].push([key, value]);
+    this.grow();
   }
 
   get(key) {
@@ -106,5 +106,23 @@ class HashMap {
       }
     }
     return keyValuesArray;
+  }
+
+  grow() {
+    if (this.length() === 0) {
+      return;
+    }
+    if (this.length() > this.loadFactor * this.capacity) {
+      this.capacity *= 2;
+      let newBucketList = [];
+      const entries = this.entries();
+      for (let i = 0; i < this.capacity; i++) {
+        newBucketList.push([]);
+      }
+      this.bucketsList = newBucketList;
+      for (let i = 0; i < entries.length; i++) {
+        this.set(entries[i][0], entries[i][1]);
+      }
+    }
   }
 }
