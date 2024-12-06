@@ -77,4 +77,14 @@ class HashMap {
       this.bucketsList[i] = [];
     }
   }
+
+  keys() {
+    let keys = [];
+    for (let i = 0; i < this.bucketsList.length; i++) {
+      for (let j = 0; j < this.bucketsList[i].length; j++) {
+        keys.push(this.bucketsList[i][j][0]);
+      }
+    }
+    return keys;
+  }
 }
